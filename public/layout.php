@@ -1,6 +1,6 @@
 <?php
 // public/layout.php
-// expects: $pageTitle (string), $content (string HTML)
+// expects: $pageTitle (string), $activePage (string), $content (string HTML)
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,22 +25,22 @@
         <div class="dc-body2 container-fluid">
             <div class="row g-0 dc-row">
 
-                <!-- LEFT PANEL -->
+                <!-- LEFT PANEL (brand) -->
                 <div class="col-12 col-lg-4 position-relative dc-left-col">
                     <div class="dc-char-color"></div>
 
                     <div class="dc-char-left">
-                        <a href="index.php" class="dc-char-return d-none d-md-block">
+                        <!-- <a href="index.php" class="dc-char-return d-none d-md-block">
                             <div></div>
                             return to<br>the directory
-                        </a>
+                        </a> -->
                         <div class="dc-char-flower d-none d-md-block"></div>
 
                         <div class="dc-char-icon mx-auto mx-lg-0">
                             <div class="dc-char-icon2"></div>
                         </div>
 
-                        <h2>Halo &amp; Hex</h2>
+                        <h2>Hex &amp; Halo</h2>
 
                         <div class="dc-char-start">
                             <div>charms</div>
@@ -55,16 +55,32 @@
                     </div>
                 </div>
 
-                <!-- RIGHT PANEL -->
+                <!-- RIGHT PANEL (nav + page content) -->
                 <div class="col-12 col-lg-8 dc-right-col">
                     <div class="dc-char-right">
                         <div class="dc-char-menu">
-                            <a href="index.php" class="dc-menu-link">shop</a>
-                            <a href="cart.php" class="dc-menu-link">cart</a>
-                            <a href="#" class="dc-menu-link">charms</a>
-                            <a href="#" class="dc-menu-link">rituals</a>
-                            <a href="#" class="dc-menu-link">about</a>
+                            <a href="index.php"
+                                class="dc-menu-link <?php echo $activePage === 'shop' ? 'dc-menu-link-active' : ''; ?>">
+                                shop
+                            </a>
+                            <a href="cart.php"
+                                class="dc-menu-link <?php echo $activePage === 'cart' ? 'dc-menu-link-active' : ''; ?>">
+                                cart
+                            </a>
+                            <a href="charms.php"
+                                class="dc-menu-link <?php echo $activePage === 'charms' ? 'dc-menu-link-active' : ''; ?>">
+                                charms
+                            </a>
+                            <a href="rituals.php"
+                                class="dc-menu-link <?php echo $activePage === 'halo-crypto' ? 'dc-menu-link-active' : ''; ?>">
+                                halo crypto
+                            </a>
+                            <a href="about.php"
+                                class="dc-menu-link <?php echo $activePage === 'about' ? 'dc-menu-link-active' : ''; ?>">
+                                about
+                            </a>
                         </div>
+
                         <div class="dc-char-bulk">
                             <div class="dc-char-bulk2">
                                 <?php echo $content; ?>
@@ -77,10 +93,15 @@
         </div>
     </div>
 
+    <?php
+    // optional: if you still want a footer component
+    // include __DIR__ . '/../components/footer.php';
+    ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Split heading first word into big line (works on all screen sizes)
+        // Split heading first word into big line
         $('.dc-char-left h2').each(function() {
             var me = $(this),
                 t = me.text().split(' ');
