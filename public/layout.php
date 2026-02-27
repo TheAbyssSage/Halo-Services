@@ -40,7 +40,7 @@
                             <div class="dc-char-icon2"></div>
                         </div>
 
-                        <h2>Hex &amp; Halo</h2>
+                        <h2>Halo &amp; Hex</h2>
 
                         <div class="dc-char-start">
                             <div>charms</div>
