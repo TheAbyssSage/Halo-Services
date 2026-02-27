@@ -363,12 +363,6 @@ a {
     background-color: var(--bg2);
 }
 
-.dc-menu-link:first-child {
-    background-color: var(--bgInverse);
-    border-color: transparent;
-    color: var(--bg1);
-}
-
 .dc-char-menu::before {
     pointer-events: none;
 }
