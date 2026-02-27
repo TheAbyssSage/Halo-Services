@@ -340,6 +340,8 @@ a {
 }
 
 .dc-menu-link {
+    position: relative;
+    z-index: 1;
     font: 500 11px / 12px var(--body);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -351,6 +353,12 @@ a {
     transition: .2s;
 }
 
+.dc-menu-link-active {
+    background-color: var(--bgInverse);
+    border-color: transparent;
+    color: var(--bg1);
+}
+
 .dc-menu-link:hover {
     background-color: var(--bg2);
 }
@@ -359,6 +367,10 @@ a {
     background-color: var(--bgInverse);
     border-color: transparent;
     color: var(--bg1);
+}
+
+.dc-char-menu::before {
+    pointer-events: none;
 }
 
 /* Content panel */
