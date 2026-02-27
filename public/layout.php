@@ -40,7 +40,7 @@
                             <div class="dc-char-icon2"></div>
                         </div>
 
-                        <h2>Hex &amp; Halo</h2>
+                        <h2>Halo &amp; Hex</h2>
 
                         <div class="dc-char-start">
                             <div>charms</div>
@@ -67,14 +67,16 @@
                                 class="dc-menu-link <?php echo $activePage === 'cart' ? 'dc-menu-link-active' : ''; ?>">
                                 cart
                             </a>
-                            <a href="charms.php"
-                                class="dc-menu-link <?php echo $activePage === 'charms' ? 'dc-menu-link-active' : ''; ?>">
-                                charms
+                            <a href="certificate.php"
+                                class="dc-menu-link <?php echo $activePage === 'certificate' ? 'dc-menu-link-active' : ''; ?>">
+                                certificate
                             </a>
-                            <a href="rituals.php"
+
+                            <a href="halo-crypto.php"
                                 class="dc-menu-link <?php echo $activePage === 'halo-crypto' ? 'dc-menu-link-active' : ''; ?>">
                                 halo crypto
                             </a>
+
                             <a href="about.php"
                                 class="dc-menu-link <?php echo $activePage === 'about' ? 'dc-menu-link-active' : ''; ?>">
                                 about
