@@ -1,4 +1,5 @@
 <?php
+// public/index.php
 session_start();
 
 $products = json_decode(file_get_contents(__DIR__ . '/../data/products.json'), true);
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
 
 $cartCount = array_sum($_SESSION['cart']);
 
-// Build page-specific HTML content into buffer
+// Build page content
 ob_start();
 ?>
 <div class="shop-header">
@@ -60,7 +61,8 @@ ob_start();
     <?php endforeach; ?>
 </div>
 <?php
-$content = ob_get_clean();
-$pageTitle = 'Hex & Halo – Shop';
+$content    = ob_get_clean();
+$pageTitle  = 'Hex & Halo – Shop';
+$activePage = 'shop';
 
 include __DIR__ . '/layout.php';
