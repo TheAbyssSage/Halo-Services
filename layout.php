@@ -1,7 +1,3 @@
-<?php
-// public/layout.php
-// expects: $pageTitle (string), $activePage (string), $content (string HTML)
-?>
 <!doctype html>
 <html lang="en">
 
@@ -67,7 +63,7 @@
                         <div class="dc-char-menu">
                             <a href="index.php"
                                 class="dc-menu-link <?php echo $activePage === 'shop' ? 'dc-menu-link-active' : ''; ?>">
-                                shop
+                                intro
                             </a>
                             <a href="cart.php"
                                 class="dc-menu-link <?php echo $activePage === 'cart' ? 'dc-menu-link-active' : ''; ?>">
