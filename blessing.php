@@ -2,7 +2,7 @@
 // public/blessing.php
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Dompdf\Dompdf;
 use Endroid\QrCode\QrCode;
@@ -456,31 +456,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Render page in layout
 ob_start();
 ?>
-<h1>Weekly Blessing Infusion</h1>
-<p class="mb-3">
-    Generate a blessing-infused certificate that wards off minor evil for one mortal week.
-    It will be added to your cart as a celestial product.
-</p>
-
-<?php if ($error): ?>
-    <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-<?php endif; ?>
-
-<form method="post" action="blessing.php" class="mb-4">
-    <div class="mb-3">
-        <label class="form-label">Your name</label>
-        <input type="text" name="name" class="form-control"
-            value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+<div class="cert-hero">
+    <div class="cert-hero-icon">✧</div>
+    <h1>Weekly <span>Blessing</span> Infusion</h1>
+    <p class="cert-hero-sub">
+        A week-long spike of gentle, probability‑bending favor, issued by the Hex &amp; Halo Bureau
+        of Gentle Miracles. Comes as an extremely printable PDF.
+    </p>
+    <div class="cert-hero-meta">
+        <div class="cert-pill">7‑day coverage</div>
+        <div class="cert-pill">cosmic morale boost</div>
+        <div class="cert-pill">spiritually binding, legally decorative</div>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label class="form-label">Start date</label>
-        <input type="date" name="start_date" class="form-control"
-            value="<?php echo htmlspecialchars($_POST['start_date'] ?? date('Y-m-d')); ?>">
-    </div>
+<div class="cert-lore">
+    <h2>What this blessing actually does</h2>
+    <p>
+        For one mortal week, a small choir of many‑eyed seraphs nudges the odds in your favour.
+        Nothing huge, nothing apocalypse‑tier – just fewer cursed moments, softer landings,
+        and a suspicious number of well‑timed little wins.
+    </p>
+    <p>
+        Think: trains you just make, emails answered kindly, plans that almost fall apart but
+        reassemble into something better. No guarantees, but the halos are quietly invested
+        in your subplot not being entirely feral.
+    </p>
+</div>
 
-    <button type="submit" class="btn btn-dark btn-sm">Prepare blessing</button>
-</form>
+<div class="cert-form-section">
+    <h2>Prepare your blessing</h2>
+    <p style="font: 12px/18px 'Inter', sans-serif; color: #666; margin-bottom: 14px;">
+        Fill in your mortal details. We’ll mint a personalised PDF certificate, tuck a QR code
+        into the corner, and drop it in your cart for celestial checkout.
+    </p>
+
+    <?php if ($error): ?>
+        <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
+    <form method="post" action="blessing.php" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">
+                Your name
+                <span style="color:#888; font-size:11px;">(for the blessing ledger)</span>
+            </label>
+            <input type="text" name="name" class="form-control"
+                value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Start date</label>
+            <input type="date" name="start_date" class="form-control"
+                value="<?php echo htmlspecialchars($_POST['start_date'] ?? date('Y-m-d')); ?>">
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-sm">Prepare blessing ✧</button>
+    </form>
+</div>
 <?php
 $content    = ob_get_clean();
 $pageTitle  = 'Hex & Halo – Weekly Blessing';
