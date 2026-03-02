@@ -717,3 +717,218 @@ a {
     letter-spacing: 2px;
     margin: 0 0 10px 0;
 }
+
+/* Small-screen tuning: keep the vibe, tighten the layout */
+
+@media (max-width: 991.98px) {
+    .dc-body {
+        padding: 8px;
+    }
+
+    .dc-body2 {
+        border-radius: 10px;
+    }
+
+    .dc-row {
+        min-height: auto;
+    }
+
+    /* Left panel: less padding, smaller avatar, don’t push content too far down */
+    .dc-char-left {
+        padding: 18px 16px 16px 16px;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .dc-char-icon {
+        height: 120px;
+        width: 120px;
+        padding: 10px;
+    }
+
+    .dc-char-left h2 {
+        margin: 14px 0 8px 0;
+        font: 900 26px/28px var(--title);
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .dc-char-left h2 div {
+        font: 900 46px/46px var(--title);
+        letter-spacing: -2px;
+    }
+
+    .dc-char-start {
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 4px;
+    }
+
+    .dc-char-start div {
+        padding: 6px 9px;
+        font-size: 10px;
+    }
+
+    .dc-char-left p {
+        max-width: 100%;
+        font: 12px/18px var(--body);
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dc-char-left p::before {
+        display: none;
+    }
+
+    .dc-char-flower {
+        display: none;
+    }
+
+    .dc-char-color {
+        height: 200px;
+        width: 200px;
+        bottom: -20px;
+        left: -20px;
+    }
+
+    /* Top menu: easier taps, less padding */
+    .dc-char-menu {
+        padding: 14px 14px;
+        gap: 6px;
+    }
+
+    .dc-menu-link {
+        font-size: 10px;
+        padding: 7px 10px;
+    }
+
+    /* Content panel: reduce side padding */
+    .dc-char-bulk2 {
+        padding: 18px 14px 22px 14px;
+    }
+
+    /* Shop + cert hero blocks on small screens */
+    .shop-header {
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+
+    .shop-header h1 {
+        font: 800 20px/22px var(--title);
+    }
+
+    .shop-header p {
+        font: 12px/17px var(--body);
+    }
+
+    .hc-hero,
+    .cert-hero {
+        padding: 22px 16px 18px;
+        margin-bottom: 18px;
+        border-radius: 12px;
+    }
+
+    .hc-hero-coin,
+    .cert-hero-icon {
+        font-size: 38px;
+        margin-bottom: 8px;
+    }
+
+    .hc-hero h2,
+    .cert-hero h1 {
+        font-size: 20px;
+        line-height: 22px;
+        letter-spacing: 2px;
+    }
+
+    .hc-hero-sub,
+    .cert-hero-sub {
+        font-size: 11px;
+        line-height: 17px;
+        max-width: 100%;
+    }
+
+    .hc-stats,
+    .cert-hero-meta {
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .hc-stat,
+    .cert-pill {
+        font-size: 9px;
+        padding: 7px 9px;
+    }
+
+    .hc-stat strong {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .hc-lore,
+    .cert-lore {
+        padding: 14px 14px;
+        margin-bottom: 14px;
+    }
+
+    .hc-lore h3,
+    .cert-lore h2 {
+        font-size: 12px;
+        letter-spacing: 1.6px;
+    }
+
+    .hc-lore p,
+    .cert-lore p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .hc-tiers,
+    .cert-tiers {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .hc-tier-card,
+    .cert-tier-card {
+        padding: 12px 12px;
+        border-radius: 10px;
+    }
+
+    .hc-tier-coins,
+    .cert-tier-count {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .hc-tier-desc,
+    .cert-tier-desc {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .hc-tier-price,
+    .cert-tier-price {
+        font-size: 12px;
+    }
+}
+
+/* Slightly tighter layout on very small devices */
+@media (max-width: 575.98px) {
+    .dc-body {
+        padding: 6px;
+    }
+
+    .dc-char-menu {
+        padding: 10px 10px;
+    }
+
+    .dc-menu-link {
+        padding: 6px 8px;
+    }
+
+    .dc-char-bulk2 {
+        padding: 16px 10px 20px 10px;
+    }
+}
