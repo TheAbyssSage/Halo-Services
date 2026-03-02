@@ -27,13 +27,6 @@ use Stripe\Checkout\Session as StripeSession;
 
 Stripe::setApiKey(STRIPE_SECRET_KEY);
 
-$productsFile = __DIR__ . '/../data/products.json';
-$products     = json_decode(file_get_contents($productsFile), true);
-$productsById = [];
-foreach ($products as $p) {
-    $productsById[$p['id']] = $p;
-}
-
 $cart  = $_SESSION['cart'] ?? [];
 $error = null;
 
