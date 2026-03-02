@@ -41,7 +41,7 @@ $tiers = [
     'omnipotent' => [
         'label' => 'Omnipotent Edition',
         'price' => 99.99,
-        'coins' => 'ꝏ',
+        'coins' => 'INFINITE',
         'desc'  => 'Infinite coins. Conceptually. We cannot ship infinity but we will try.',
     ],
 ];
