@@ -2,7 +2,7 @@
 // public/cart.php
 session_start();
 
-$productsFile = __DIR__ . '/../data/products.json';
+$productsFile = __DIR__ . '/data/products.json';
 $products = json_decode(file_get_contents($productsFile), true);
 
 $productsById = [];

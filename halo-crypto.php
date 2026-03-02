@@ -2,7 +2,7 @@
 // public/halo-crypto.php
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Dompdf\Dompdf;
 use Endroid\QrCode\QrCode;

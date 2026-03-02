@@ -2,7 +2,7 @@
 // public/index.php
 session_start();
 
-$products = json_decode(file_get_contents(__DIR__ . '/../data/products.json'), true);
+$products = json_decode(file_get_contents(__DIR__ . '/data/products.json'), true);
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
