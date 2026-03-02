@@ -1,13 +1,6 @@
 <?php
 session_start();
 
-$productsFile = __DIR__ . '/data/products.json';
-$products = json_decode(file_get_contents($productsFile), true);
-
-$productsById = [];
-foreach ($products as $p) {
-    $productsById[$p['id']] = $p;
-}
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
