@@ -33,21 +33,193 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 2) Build PDF HTML
         ob_start();
 ?>
-        <h1>Certificate of Temporary Divine Favor</h1>
-        <p>
-            This certifies that <strong><?php echo htmlspecialchars($name); ?></strong>
-            is officially blessed from
-            <strong><?php echo htmlspecialchars($startDate); ?></strong>
-            until
-            <strong><?php echo htmlspecialchars($endDate); ?></strong>.
-        </p>
-        <p>
-            Side effects may include: better coffee, minor plot armor, and fewer cursed encounters.
-        </p>
-        <p>Issued by Hex &amp; Halo, Bureau of Gentle Miracles.</p>
-        <p><?php echo $qrImgTag; ?></p>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <title>Certificate of Temporary Divine Favor</title>
+            <style>
+                body {
+                    margin: 0;
+                    padding: 40px;
+                    font-family: 'Inter', sans-serif;
+                    background-color: #EAEBE8;
+                    color: #3C3E4A;
+                }
+
+                .card {
+                    background-color: #F7F7F4;
+                    border-radius: 14px;
+                    border: 1px solid #D1D4CD;
+                    padding: 32px 36px;
+                    box-sizing: border-box;
+                    box-shadow: 0 0 0 12px #EAEBE8;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .card::before {
+                    content: "";
+                    position: absolute;
+                    inset: -60px;
+                    background: radial-gradient(circle at top right, rgba(214, 183, 108, 0.25), transparent 60%);
+                    opacity: 0.9;
+                    pointer-events: none;
+                }
+
+                h1 {
+                    margin: 0 0 10px 0;
+                    font-family: 'DM Sans', sans-serif;
+                    font-weight: 900;
+                    font-size: 26px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                h1 span {
+                    display: block;
+                    font-size: 44px;
+                    letter-spacing: -2px;
+                    background: linear-gradient(to bottom, #D6B76C, #3C3E4A 75%);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                }
+
+                .subtitle {
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                    margin-bottom: 18px;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .pill {
+                    display: inline-block;
+                    border-radius: 999px;
+                    border: 1px solid #D1D4CD;
+                    background-color: #EAEBE8;
+                    padding: 4px 10px;
+                    font-size: 9px;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    margin-bottom: 10px;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                p,
+                ul {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                p {
+                    font-size: 12px;
+                    line-height: 1.7;
+                    margin: 0 0 10px 0;
+                }
+
+                ul {
+                    margin: 8px 0 12px 16px;
+                    padding: 0;
+                    font-size: 11px;
+                    line-height: 1.6;
+                }
+
+                li {
+                    margin-bottom: 4px;
+                }
+
+                .emphasis {
+                    font-style: italic;
+                    color: #555;
+                }
+
+                .footer {
+                    margin-top: 16px;
+                    font-size: 10px;
+                    color: #777;
+                }
+
+                .seraph-note {
+                    font-size: 10px;
+                    color: #555;
+                    margin-top: 6px;
+                }
+
+                strong {
+                    font-weight: 700;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="card">
+                <div class="pill">Hex &amp; Halo // Bureau of Gentle Miracles</div>
+
+                <h1>
+                    Certificate of
+                    <span>Divine Favor</span>
+                </h1>
+
+                <p class="subtitle">
+                    WEEKLY BLESSING INFUSION – OBSERVED BY MANY‑EYED SERAPHS
+                </p>
+
+                <p>
+                    Let it be recorded that
+                    <strong><?php echo htmlspecialchars($name); ?></strong>
+                    is placed under temporary, luminous favor from
+                    <strong><?php echo htmlspecialchars($startDate); ?></strong>
+                    until
+                    <strong><?php echo htmlspecialchars($endDate); ?></strong>.
+                </p>
+
+                <p>
+                    For the duration of this week, a small assembly of biblically accurate angels
+                    (wheels within wheels, wings upon wings, and eyes in every direction)
+                    has been instructed to gently tilt probability in the bearer’s favor.
+                </p>
+
+                <p>
+                    Expected manifestations may include:
+                </p>
+
+                <ul>
+                    <li>Moments of uncanny timing where doors open just as you arrive.</li>
+                    <li>Chance encounters that feel scripted by something with too many wings.</li>
+                    <li>A noticeable reduction in cursed events, glitches, and narrative dead-ends.</li>
+                </ul>
+
+                <p class="emphasis">
+                    Witnesses may report the distant rustle of wings, soft golden static,
+                    or the feeling of being calmly watched by something vast and benevolent.
+                </p>
+
+                <p>
+                    This favor does not guarantee invincibility; it simply ensures that
+                    when chaos rolls its dice, a quiet choir of eyes and halos leans
+                    ever so slightly on the table.
+                </p>
+
+                <p class="footer">
+                    Issued by Hex &amp; Halo, Bureau of Gentle Miracles.
+                    Valid for one mortal week only. Renewal requires additional petitions and at least one snack
+                    offering left somewhere aesthetically pleasing.
+                </p>
+            </div>
+        </body>
+
+        </html>
 <?php
         $html = ob_get_clean();
+
+
 
         // 3) Render PDF
         $dompdf = new Dompdf();
