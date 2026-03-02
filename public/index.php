@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     exit;
 }
 
-$cartCount = array_sum($_SESSION['cart']);
+// $cartCount = array_sum($_SESSION['cart']);
 
 // Build page content
 ob_start();
@@ -31,10 +31,10 @@ ob_start();
         <h1>Shop the Halo</h1>
         <p>Charms, kits, and readings for mortals who like a little magic with their coffee.</p>
     </div>
-    <a href="cart.php" class="btn btn-outline-dark btn-sm shop-cart-button">
+    <!-- <a href="cart.php" class="btn btn-outline-dark btn-sm shop-cart-button">
         <i class="ph ph-shopping-cart"></i>
         Cart (<?php echo $cartCount; ?>)
-    </a>
+    </a> -->
 </div>
 
 <div class="shop-grid">
