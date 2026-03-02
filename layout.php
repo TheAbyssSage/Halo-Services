@@ -42,7 +42,7 @@
                             <div class="dc-char-icon2"></div>
                         </div>
 
-                        <h2>Halo &amp; Hex</h2>
+                        <h2 style="text-align: center !important;">Halo &amp; Hex</h2>
 
                         <div class="dc-char-start">
                             <div>charms</div>
