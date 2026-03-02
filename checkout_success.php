@@ -1,8 +1,7 @@
 <?php
-// public/checkout_success.php
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config.php';
 
 // Try both naming conventions for Stripe config
@@ -70,62 +69,125 @@ if ($paid && !empty($cart)) {
 // Render in layout
 ob_start();
 ?>
-<h1>Order complete</h1>
+<div class="cert-hero">
+    <div class="cert-hero-icon">☑</div>
+    <h1>Order <span>complete</span></h1>
+    <p class="cert-hero-sub">
+        Your request has been processed by the Hex &amp; Halo bureau. If the angels approved payment,
+        your freshly minted celestial paperwork is ready to download.
+    </p>
+    <div class="cert-hero-meta">
+        <?php if ($testMode): ?>
+            <div class="cert-pill">test mode – no real charge</div>
+        <?php endif; ?>
+        <?php if ($free): ?>
+            <div class="cert-pill">free order – blessing only</div>
+        <?php endif; ?>
+        <div class="cert-pill">pdf certificates</div>
+        <div class="cert-pill">qr‑tagged downloads</div>
+    </div>
+</div>
 
 <?php if ($testMode): ?>
-    <div class="alert alert-warning">
-        <strong>⚠ Test mode is on.</strong>
-        Payment was skipped. Set <code>TEST_MODE = false</code> in <code>config.php</code> to go live.
+    <div class="cert-lore">
+        <h2>Test run acknowledged</h2>
+        <p>
+            This was a dry run through the celestial checkout systems. No mortal payment methods were
+            touched; the angels simply pretended very convincingly.
+        </p>
+        <p>
+            To go live, set <code>TEST_MODE = false</code> in <code>config.php</code> and the bureau
+            will start talking to real Stripe sessions instead of imaginary ones.
+        </p>
+        <div class="alert alert-warning mt-2 mb-0">
+            <strong>⚠ Test mode is on.</strong>
+            Payment was skipped. Set <code>TEST_MODE = false</code> in <code>config.php</code> to go live.
+        </div>
     </div>
 <?php endif; ?>
 
 <?php if ($error): ?>
-    <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-    <a href="cart.php" class="btn btn-secondary btn-sm">Back to cart</a>
-
-<?php elseif ($paid): ?>
-    <div class="alert alert-success">
-        Payment received. Your celestial paperwork is ready below.
+    <div class="cert-lore">
+        <h2>Something went sideways</h2>
+        <p>
+            The payment status could not be cleanly confirmed. Sometimes Stripe blinks, sometimes
+            the bureaucracy does. Either way, no new paperwork has been filed… yet.
+        </p>
+        <div class="alert alert-danger mt-2">
+            <?php echo htmlspecialchars($error); ?>
+        </div>
+        <a href="cart.php" class="btn btn-secondary btn-sm mt-2">Back to cart</a>
     </div>
 
-    <?php if (!empty($downloadFiles)): ?>
-        <p>Your downloads should start automatically. If not, use the links:</p>
-        <ul class="mb-4">
-            <?php foreach ($downloadFiles as $i => $file): ?>
-                <li>
-                    <a id="cert-link-<?php echo $i; ?>"
-                        href="<?php echo htmlspecialchars($file['href']); ?>"
-                        download>
-                        <?php echo htmlspecialchars($file['label']); ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+<?php elseif ($paid): ?>
 
-        <script>
-            window.addEventListener('load', function() {
+    <div class="cert-lore">
+        <h2>Your celestial paperwork is ready</h2>
+        <p>
+            The transaction cleared, the ledgers updated, and at least one many‑eyed auditor nodded
+            in approval. Your certificates are now ready to be downloaded and framed, printed,
+            or hoarded in a very organised folder.
+        </p>
+        <div class="alert alert-success mt-2">
+            Payment received. Your celestial paperwork is ready below.
+        </div>
+
+        <?php if (!empty($downloadFiles)): ?>
+            <p class="mt-3">
+                Downloads should start automatically in a moment. If your browser is feeling shy,
+                you can also grab them manually here:
+            </p>
+            <ul class="mb-3">
                 <?php foreach ($downloadFiles as $i => $file): ?>
-                        (function() {
-                            var link = document.getElementById('cert-link-<?php echo $i; ?>');
-                            if (link) {
-                                // Stagger downloads slightly so browsers don't block them
-                                setTimeout(function() {
-                                    link.click();
-                                }, <?php echo $i * 600; ?>);
-                            }
-                        })();
+                    <li>
+                        <a id="cert-link-<?php echo $i; ?>"
+                            href="<?php echo htmlspecialchars($file['href']); ?>"
+                            download>
+                            <?php echo htmlspecialchars($file['label']); ?>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
-            });
-        </script>
-    <?php else: ?>
-        <p>No downloadable certificates were found for this order.</p>
-    <?php endif; ?>
+            </ul>
 
-    <a href="index.php" class="btn btn-dark btn-sm mt-2">Back to shop</a>
+            <script>
+                window.addEventListener('load', function() {
+                    <?php foreach ($downloadFiles as $i => $file): ?>
+                            (function() {
+                                var link = document.getElementById('cert-link-<?php echo $i; ?>');
+                                if (link) {
+                                    // Stagger downloads slightly so browsers don't block them
+                                    setTimeout(function() {
+                                        link.click();
+                                    }, <?php echo $i * 600; ?>);
+                                }
+                            })();
+                    <?php endforeach; ?>
+                });
+            </script>
+        <?php else: ?>
+            <p class="mt-3">
+                No downloadable certificates were found for this order. If you were expecting
+                something with halos and fine print, you may want to check your cart and try again.
+            </p>
+        <?php endif; ?>
+
+        <a href="index.php" class="btn btn-dark btn-sm mt-2">Back to home ✦</a>
+    </div>
 
 <?php else: ?>
-    <div class="alert alert-warning">Payment status could not be confirmed.</div>
-    <a href="cart.php" class="btn btn-secondary btn-sm">Back to cart</a>
+
+    <div class="cert-lore">
+        <h2>Payment status unclear</h2>
+        <p>
+            Stripe didn&apos;t confirm a completed payment, so the angels are holding your paperwork
+            in a pending state. No certificates were released this round.
+        </p>
+        <div class="alert alert-warning mt-2">
+            Payment status could not be confirmed.
+        </div>
+        <a href="cart.php" class="btn btn-secondary btn-sm mt-2">Back to cart</a>
+    </div>
+
 <?php endif; ?>
 
 <?php

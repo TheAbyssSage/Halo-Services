@@ -1,8 +1,7 @@
 <?php
-// public/chaos-license.php
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Dompdf\Dompdf;
 use Endroid\QrCode\QrCode;
@@ -525,39 +524,111 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ob_start();
 ?>
-<h1>Chaos Containment License</h1>
-<p class="mb-3">
-    Get officially licensed to wield small, contained chaos under Hex &amp; Halo supervision.
-</p>
+<div class="cert-hero">
+    <div class="cert-hero-icon">꩜</div>
+    <h1>Chaos <span>Containment</span> License</h1>
+    <p class="cert-hero-sub">
+        Official paperwork proving you are legally (spiritually) allowed to deploy small, contained chaos
+        under Hex &amp; Halo supervision. Gremlin energy, now with documentation.
+    </p>
+    <div class="cert-hero-meta">
+        <div class="cert-pill">regulated mischief</div>
+        <div class="cert-pill">seraphic oversight</div>
+        <div class="cert-pill">one‑year validity</div>
+    </div>
+</div>
 
-<?php if ($error): ?>
-    <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-<?php endif; ?>
+<div class="cert-lore">
+    <h2>What kind of havoc is allowed</h2>
+    <p>
+        Your license tier decides how spicy your nonsense can get. All activity is monitored
+        by entities with feathers, clipboards, and a very stern sense of fun‑safety balance.
+    </p>
+    <p>
+        You still have free will, but if you try to cause an apocalypse with this document,
+        several angels will show up to have a meeting about your life choices.
+    </p>
+</div>
 
-<form method="post" action="chaos-license.php" class="mb-4">
-    <div class="mb-3">
-        <label class="form-label">Your name</label>
-        <input type="text" name="name" class="form-control"
-            value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+<div class="cert-tiers">
+    <div class="cert-tier-card">
+        <div class="cert-tier-label">Training wheels</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Apprentice Gremlin</div>
+            <div class="cert-tier-count">€2.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            Supervised mischief only. Harmless pranks, reversible glitches, and very gentle chaos.
+        </div>
+        <div class="cert-tier-price">Perfect for chaotic good beginners.</div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">License tier</label>
-        <select name="tier" class="form-select">
-            <option value="apprentice" <?php echo (($_POST['tier'] ?? '') === 'apprentice') ? 'selected' : ''; ?>>
-                Apprentice Gremlin – €2.99 – supervised mischief only
-            </option>
-            <option value="licensed" <?php echo (($_POST['tier'] ?? 'licensed') === 'licensed') ? 'selected' : ''; ?>>
-                Licensed Chaos Gremlin – €5.99 – standard field license
-            </option>
-            <option value="overseer" <?php echo (($_POST['tier'] ?? '') === 'overseer') ? 'selected' : ''; ?>>
-                Chaos Overseer – €9.99 – trusted with serious nonsense
-            </option>
-        </select>
+    <div class="cert-tier-card highlight">
+        <div class="cert-tier-label">Field license</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Licensed Chaos Gremlin</div>
+            <div class="cert-tier-count">€5.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            Standard field certification for mid‑level nonsense and timeline nudges.
+        </div>
+        <div class="cert-tier-price">The Bureau’s recommended chaos quota.</div>
     </div>
 
-    <button type="submit" class="btn btn-dark btn-sm">Add to cart</button>
-</form>
+    <div class="cert-tier-card" style="grid-column: 1 / -1;">
+        <div class="cert-tier-label">Serious nonsense</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Chaos Overseer</div>
+            <div class="cert-tier-count">€9.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            Trusted with multi‑stage schemes and narrative detours that still land safely.
+        </div>
+        <div class="cert-tier-price">
+            For people who look at a group chat and think “what if this had lore?”
+        </div>
+    </div>
+</div>
+
+<div class="cert-form-section">
+    <h2>Apply for your license</h2>
+    <p style="font: 12px/18px 'Inter', sans-serif; color: #666; margin-bottom: 14px;">
+        Tell the Bureau who they’re letting loose. We’ll generate a personalised PDF license,
+        complete with QR code and ominous but affectionate fine print.
+    </p>
+
+    <?php if ($error): ?>
+        <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
+    <form method="post" action="chaos-license.php" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">
+                Your name
+                <span style="color:#888; font-size:11px;">(for the mischief registry)</span>
+            </label>
+            <input type="text" name="name" class="form-control"
+                value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">License tier</label>
+            <select name="tier" class="form-select">
+                <option value="apprentice" <?php echo (($_POST['tier'] ?? '') === 'apprentice') ? 'selected' : ''; ?>>
+                    Apprentice Gremlin – €2.99 – supervised mischief only
+                </option>
+                <option value="licensed" <?php echo (($_POST['tier'] ?? 'licensed') === 'licensed') ? 'selected' : ''; ?>>
+                    Licensed Chaos Gremlin – €5.99 – standard field license
+                </option>
+                <option value="overseer" <?php echo (($_POST['tier'] ?? '') === 'overseer') ? 'selected' : ''; ?>>
+                    Chaos Overseer – €9.99 – trusted with serious nonsense
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-sm">Add to cart ꩜</button>
+    </form>
+</div>
 <?php
 $content    = ob_get_clean();
 $pageTitle  = 'Hex & Halo – Chaos License';

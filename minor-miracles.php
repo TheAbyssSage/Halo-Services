@@ -1,8 +1,7 @@
 <?php
-// public/minor-miracles.php
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Dompdf\Dompdf;
 use Endroid\QrCode\QrCode;
@@ -475,39 +474,112 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ob_start();
 ?>
-<h1>Minor Miracles Pass</h1>
-<p class="mb-3">
-    Claim an official pass that entitles you to a reasonable number of minor miracles.
-</p>
+<div class="cert-hero">
+    <div class="cert-hero-icon">✨</div>
+    <h1>Minor <span>Miracles</span> Pass</h1>
+    <p class="cert-hero-sub">
+        A sanctioned stash of tiny reality edits: better timing, softer chaos, and suspiciously
+        cinematic coincidences, all logged in the Office of Tiny Wonders.
+    </p>
+    <div class="cert-hero-meta">
+        <div class="cert-pill">controlled reality tweaks</div>
+        <div class="cert-pill">cherubim supervision</div>
+        <div class="cert-pill">90‑day validity</div>
+    </div>
+</div>
 
-<?php if ($error): ?>
-    <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-<?php endif; ?>
+<div class="cert-lore">
+    <h2>What counts as a “minor miracle”</h2>
+    <p>
+        These are not parting‑the‑sea level events. Think more: the job posting you needed
+        appearing at the right time, the last train being delayed just enough, or your headphones
+        re‑appearing exactly where you swear you checked five times.
+    </p>
+    <p>
+        Each pass comes with a finite number of little nudges, observed by extremely nosy
+        celestial auditors who care deeply about comedic timing and emotional payoff.
+    </p>
+</div>
 
-<form method="post" action="minor-miracles.php" class="mb-4">
-    <div class="mb-3">
-        <label class="form-label">Your name</label>
-        <input type="text" name="name" class="form-control"
-            value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+<div class="cert-tiers">
+    <div class="cert-tier-card">
+        <div class="cert-tier-label">Starter pack</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Tiny Wonders</div>
+            <div class="cert-tier-count">€1.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            3 small miracles. Lost‑and‑found items, coin flips, and low‑stakes luck checks.
+        </div>
+        <div class="cert-tier-price">For people testing the waters of divine customer service.</div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Miracle tier</label>
-        <select name="tier" class="form-select">
-            <option value="tiny" <?php echo (($_POST['tier'] ?? '') === 'tiny')     ? 'selected' : ''; ?>>
-                Tiny Wonders – €1.99 – 3 minor miracles
-            </option>
-            <option value="standard" <?php echo (($_POST['tier'] ?? 'standard') === 'standard') ? 'selected' : ''; ?>>
-                Standard Wonders – €4.99 – 7 minor miracles
-            </option>
-            <option value="extra" <?php echo (($_POST['tier'] ?? '') === 'extra')    ? 'selected' : ''; ?>>
-                Extra Sparkly – €8.99 – 13 minor miracles
-            </option>
-        </select>
+    <div class="cert-tier-card highlight">
+        <div class="cert-tier-label">Everyday edits</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Standard Wonders</div>
+            <div class="cert-tier-count">€4.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            7 practical timeline tweaks; exam questions, social vibes, and plan‑B rescues.
+        </div>
+        <div class="cert-tier-price">The Office’s recommended miracles bundle.</div>
     </div>
 
-    <button type="submit" class="btn btn-dark btn-sm">Add to cart</button>
-</form>
+    <div class="cert-tier-card" style="grid-column: 1 / -1;">
+        <div class="cert-tier-label">Main character arc</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Extra Sparkly</div>
+            <div class="cert-tier-count">€8.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            13 cinematic coincidences, with lighting, ambience, and narrative weight turned up.
+        </div>
+        <div class="cert-tier-price">
+            For people who suspect they’re overdue a montage.
+        </div>
+    </div>
+</div>
+
+<div class="cert-form-section">
+    <h2>Claim your pass</h2>
+    <p style="font: 12px/18px 'Inter', sans-serif; color: #666; margin-bottom: 14px;">
+        Introduce yourself to the Office of Tiny Wonders and pick your miracle tier.
+        We’ll mint a personalised PDF pass with a QR‑tagged miracle ledger.
+    </p>
+
+    <?php if ($error): ?>
+        <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
+    <form method="post" action="minor-miracles.php" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">
+                Your name
+                <span style="color:#888; font-size:11px;">(for the miracle registry)</span>
+            </label>
+            <input type="text" name="name" class="form-control"
+                value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Miracle tier</label>
+            <select name="tier" class="form-select">
+                <option value="tiny" <?php echo (($_POST['tier'] ?? '') === 'tiny') ? 'selected' : ''; ?>>
+                    Tiny Wonders – €1.99 – 3 minor miracles
+                </option>
+                <option value="standard" <?php echo (($_POST['tier'] ?? 'standard') === 'standard') ? 'selected' : ''; ?>>
+                    Standard Wonders – €4.99 – 7 minor miracles
+                </option>
+                <option value="extra" <?php echo (($_POST['tier'] ?? '') === 'extra') ? 'selected' : ''; ?>>
+                    Extra Sparkly – €8.99 – 13 minor miracles
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-sm">Add to cart ✨</button>
+    </form>
+</div>
 <?php
 $content    = ob_get_clean();
 $pageTitle  = 'Hex & Halo – Minor Miracles';

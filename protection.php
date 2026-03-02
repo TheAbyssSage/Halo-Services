@@ -1,8 +1,7 @@
 <?php
-// public/protection.php
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Dompdf\Dompdf;
 use Endroid\QrCode\QrCode;
@@ -534,45 +533,121 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ob_start();
 ?>
-<h1>Angelic Protection Seal</h1>
-<p class="mb-3">
-    One-month angelic protection, with tiers from light ward to archangel priority.
-</p>
+<div class="cert-hero">
+    <div class="cert-hero-icon">⛨</div>
+    <h1>Angelic <span>Protection</span> Seal</h1>
+    <p class="cert-hero-sub">
+        A one‑month ward against cursed timing and narrative difficulty spikes. From gentle background
+        guardianship to full exam‑week archangel priority, signed off by the Bureau of Celestial Affairs.
+    </p>
+    <div class="cert-hero-meta">
+        <div class="cert-pill">30‑day coverage</div>
+        <div class="cert-pill">tiered seraphic support</div>
+        <div class="cert-pill">biblically accurate oversight</div>
+    </div>
+</div>
 
-<?php if ($error): ?>
-    <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-<?php endif; ?>
+<div class="cert-lore">
+    <h2>How this ward behaves</h2>
+    <p>
+        Your name goes into a very serious ledger watched by beings made of halos, fire,
+        and far too many eyes. For one month, they quietly interfere whenever the universe
+        is about to get a little too dramatic on your watch.
+    </p>
+    <p>
+        Think fewer catastrophic near‑misses, more “that could have gone so much worse” moments,
+        and the occasional suspiciously well‑timed save from something with wings.
+    </p>
+</div>
 
-<form method="post" action="protection.php" class="mb-4">
-    <div class="mb-3">
-        <label class="form-label">Your name</label>
-        <input type="text" name="name" class="form-control"
-            value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+<div class="cert-tiers">
+    <div class="cert-tier-card">
+        <div class="cert-tier-label">Soft mode</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Light Ward</div>
+            <div class="cert-tier-count">€3.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            Gentle nudge against bad vibes, petty misfortune, and small daily chaos.
+        </div>
+        <div class="cert-tier-price">Best for “life is mostly fine but I’d like a buff.”</div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Protection tier</label>
-        <select name="tier" class="form-select">
-            <option value="light" <?php echo (($_POST['tier'] ?? '') === 'light')     ? 'selected' : ''; ?>>
-                Light Ward – €3.99 – gentle nudge against bad vibes
-            </option>
-            <option value="standard" <?php echo (($_POST['tier'] ?? 'standard') === 'standard') ? 'selected' : ''; ?>>
-                Standard Ward – €6.99 – everyday angelic coverage
-            </option>
-            <option value="archangel" <?php echo (($_POST['tier'] ?? '') === 'archangel') ? 'selected' : ''; ?>>
-                Archangel Priority – €12.99 – for boss fights and exam weeks
-            </option>
-        </select>
+    <div class="cert-tier-card highlight">
+        <div class="cert-tier-label">Everyday shield</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Standard Ward</div>
+            <div class="cert-tier-count">€6.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            Choir of angels quietly auditing your timeline and intercepting spicier nonsense.
+        </div>
+        <div class="cert-tier-price">Recommended default setting.</div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Start date</label>
-        <input type="date" name="start_date" class="form-control"
-            value="<?php echo htmlspecialchars($_POST['start_date'] ?? date('Y-m-d')); ?>">
+    <div class="cert-tier-card" style="grid-column: 1 / -1;">
+        <div class="cert-tier-label">Boss fight prep</div>
+        <div class="cert-tier-main">
+            <div class="cert-tier-name">Archangel Priority</div>
+            <div class="cert-tier-count">€12.99</div>
+        </div>
+        <div class="cert-tier-desc">
+            High‑ranking, lore‑accurate angels assigned to your case file for big moments.
+        </div>
+        <div class="cert-tier-price">
+            Exam weeks, hard conversations, and “please don’t let this explode” months.
+        </div>
     </div>
+</div>
 
-    <button type="submit" class="btn btn-dark btn-sm">Add to cart</button>
-</form>
+<div class="cert-form-section">
+    <h2>Request your seal</h2>
+    <p style="font: 12px/18px 'Inter', sans-serif; color: #666; margin-bottom: 14px;">
+        Tell the Bureau who you are and when the ward should start. We’ll mint a personalised
+        PDF with IDs, dates, and just enough eldritch fine print to feel official.
+    </p>
+
+    <?php if ($error): ?>
+        <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
+    <form method="post" action="protection.php" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">
+                Your name
+                <span style="color:#888; font-size:11px;">(for the celestial case file)</span>
+            </label>
+            <input type="text" name="name" class="form-control"
+                value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Protection tier</label>
+            <select name="tier" class="form-select">
+                <option value="light" <?php echo (($_POST['tier'] ?? '') === 'light') ? 'selected' : ''; ?>>
+                    Light Ward – €3.99 – gentle nudge against bad vibes
+                </option>
+                <option value="standard" <?php echo (($_POST['tier'] ?? 'standard') === 'standard') ? 'selected' : ''; ?>>
+                    Standard Ward – €6.99 – everyday angelic coverage
+                </option>
+                <option value="archangel" <?php echo (($_POST['tier'] ?? '') === 'archangel') ? 'selected' : ''; ?>>
+                    Archangel Priority – €12.99 – for boss fights and exam weeks
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">
+                Start date
+                <span style="color:#888; font-size:11px;">(when the ward goes live)</span>
+            </label>
+            <input type="date" name="start_date" class="form-control"
+                value="<?php echo htmlspecialchars($_POST['start_date'] ?? date('Y-m-d')); ?>">
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-sm">Add to cart ⛨</button>
+    </form>
+</div>
 <?php
 $content    = ob_get_clean();
 $pageTitle  = 'Hex & Halo – Angelic Protection';

@@ -526,3 +526,195 @@ a {
 .shop-card-form button.btn {
     white-space: nowrap;
 }
+
+/* Certificate / ritual style blocks (inspired by HALO Coin section) */
+
+.cert-hero {
+    background: linear-gradient(135deg, #3C3E4A 0%, #1a1b22 100%);
+    border-radius: 14px;
+    padding: 28px 24px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    color: #F7F7F4;
+}
+
+.cert-hero::before {
+    content: '';
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(214, 183, 108, 0.22) 0%, transparent 70%);
+    top: -80px;
+    right: -60px;
+    pointer-events: none;
+}
+
+.cert-hero-icon {
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    animation: cert-glow 7s ease-in-out infinite;
+}
+
+@keyframes cert-glow {
+    0% {
+        filter: drop-shadow(0 0 6px rgba(214, 183, 108, 0.7));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 18px rgba(214, 183, 108, 1));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 6px rgba(214, 183, 108, 0.7));
+    }
+}
+
+.cert-hero h1 {
+    font: 900 24px/26px 'DM Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 0 6px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.cert-hero h1 span {
+    color: #D6B76C;
+}
+
+.cert-hero-sub {
+    font: 12px/18px 'Inter', sans-serif;
+    color: rgba(247, 247, 244, 0.7);
+    max-width: 520px;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.cert-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.cert-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    border: 1px solid rgba(214, 183, 108, 0.35);
+    font: 500 10px/11px 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 6px 10px;
+    color: rgba(247, 247, 244, 0.9);
+}
+
+/* Lore / explanation box */
+
+.cert-lore {
+    border: 1px solid var(--bgBorder);
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: var(--bg0);
+    margin-bottom: 20px;
+    font: 13px/20px 'Inter', sans-serif;
+    color: #444;
+}
+
+.cert-lore h2 {
+    font: 700 13px/14px 'DM Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+.cert-lore p {
+    margin: 0 0 8px 0;
+}
+
+.cert-lore p:last-child {
+    margin-bottom: 0;
+}
+
+/* Tier / option cards for certificate pages */
+
+.cert-tiers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+@media (min-width: 576px) {
+    .cert-tiers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.cert-tier-card {
+    border-radius: 12px;
+    border: 1px solid var(--bgBorder);
+    background: var(--bg0);
+    padding: 14px 16px;
+}
+
+.cert-tier-card.highlight {
+    border-color: #D6B76C;
+    background: linear-gradient(135deg, #fffbf0, #fdf5de);
+}
+
+.cert-tier-label {
+    font: 700 11px/13px 'DM Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.cert-tier-main {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.cert-tier-name {
+    font: 700 15px/18px 'DM Sans', sans-serif;
+}
+
+.cert-tier-count {
+    font: 900 20px/22px 'DM Sans', sans-serif;
+    color: #D6B76C;
+}
+
+.cert-tier-desc {
+    font: 11px/16px 'Inter', sans-serif;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.cert-tier-price {
+    font: 700 13px/15px 'DM Sans', sans-serif;
+    color: #1a1a1a;
+}
+
+/* Form section title for certificates */
+
+.cert-form-section {
+    margin-top: 4px;
+}
+
+.cert-form-section h2 {
+    font: 700 13px/14px 'DM Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 10px 0;
+}
