@@ -1,5 +1,4 @@
 <?php
-// public/cart.php
 session_start();
 
 $productsFile = __DIR__ . '/data/products.json';

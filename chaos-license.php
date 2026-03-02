@@ -1,5 +1,4 @@
 <?php
-// public/chaos-license.php
 session_start();
 
 require __DIR__ . '/vendor/autoload.php';

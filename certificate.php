@@ -1,5 +1,4 @@
 <?php
-// public/certificate.php
 session_start();
 
 ob_start();

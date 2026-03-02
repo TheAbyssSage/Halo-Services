@@ -1,5 +1,4 @@
 <?php
-// public/index.php
 session_start();
 
 if (!isset($_SESSION['cart'])) {

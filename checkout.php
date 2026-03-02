@@ -1,9 +1,7 @@
 <?php
-// public/checkout.php
-// Creates a Stripe Checkout Session from the cart and redirects to Stripe.
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config.php';
 
 // Try both naming conventions for Stripe config
