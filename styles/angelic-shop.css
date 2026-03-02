@@ -27,10 +27,9 @@ body {
     --accent: #D6B76C;
 
     --icon: url(https://64.media.tumblr.com/f485d0186a8b6f30715186209e4be928/67fdbf44feac570e-bd/s2048x3072/8c1296218fa7686cebcc7ca61b405c090ccd4244.pnj);
-    --banner: url(https://i.ibb.co/hXrPYz3/780000-Mari.png);
     --flower: url(https://i.ibb.co/PxMqGRh/Stult-Flower3.png);
 
-    --body: 'Inter', sans-serif;
+    /* --body: sans-serif; */
     --title: 'DM Sans', sans-serif;
 }
 
