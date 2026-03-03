@@ -41,7 +41,7 @@ ob_start();
             A week of biased dice rolls in your favour. Softens cursed moments and boosts quiet wins.
         </p>
         <div class="shop-card-meta">
-            <div class="shop-card-price">€ 4.99</div>
+            <div class="shop-card-price">€ 1.00</div>
             <a href="blessing.php" class="btn btn-dark btn-sm">Summon</a>
         </div>
     </div>
