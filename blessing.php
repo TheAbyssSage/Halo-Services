@@ -437,7 +437,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'type'        => 'certificate',
             'certificate' => 'blessing',
             'display'     => 'Weekly Blessing for ' . $name,
-            'price'       => 4.99, // set your price
+            'price'       => 1, // set your price
             'file_path'   => 'tmp_certs/' . $fileName, // relative to public/
             'meta'        => [
                 'name'       => $name,
